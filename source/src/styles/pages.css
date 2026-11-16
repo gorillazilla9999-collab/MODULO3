@@ -1,0 +1,489 @@
+/* ───────── Tools library ───────── */
+.tool-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 14px;
+}
+
+.tool-grid > li {
+  display: flex;
+}
+
+.tool-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+
+a.tool-card:hover {
+  border-color: var(--accent-line);
+  background: #181e1a;
+  transform: translateY(-1px);
+}
+
+.tool-card.is-soon {
+  background: transparent;
+  border-style: dashed;
+  border-color: var(--border-strong);
+}
+
+.tool-card.is-soon .tool-card-icon {
+  background: var(--elevated);
+  color: var(--text-3);
+}
+
+.tool-card.is-soon .tool-card-name {
+  color: var(--text-2);
+}
+
+.tool-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.tool-card-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.tool-card-arrow {
+  color: var(--text-3);
+  transition: color var(--dur), transform var(--dur) var(--ease);
+}
+
+a.tool-card:hover .tool-card-arrow {
+  color: var(--accent);
+  transform: translate(2px, -2px);
+}
+
+.tool-card-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.tool-card-desc {
+  flex: 1;
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.tool-card .badge {
+  margin-top: 10px;
+}
+
+.tool-frame {
+  width: 100%;
+  padding: 24px;
+}
+
+.tool-frame-regular {
+  max-width: 760px;
+}
+
+.tool-frame-compact {
+  max-width: 540px;
+}
+
+/* ───────── Notes ───────── */
+.page-fill {
+  min-height: 100%;
+}
+
+.notes-layout {
+  display: grid;
+  grid-template-columns: 330px minmax(0, 1fr);
+  gap: var(--gap);
+  height: calc(100dvh - var(--topbar-h) - 190px);
+  min-height: 460px;
+}
+
+.notes-list-panel,
+.notes-editor-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.notes-search {
+  display: flex;
+  align-items: center;
+  flex: none;
+  gap: 10px;
+  height: 50px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-3);
+}
+
+.notes-search input {
+  flex: 1;
+  height: 100%;
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: var(--text);
+}
+
+.notes-search input::placeholder {
+  color: var(--text-3);
+}
+
+.notes-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px;
+}
+
+.note-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 11px 12px;
+  border-radius: var(--radius);
+  transition: background var(--dur);
+}
+
+.note-row:hover {
+  background: var(--elevated);
+}
+
+.note-row.is-active {
+  background: var(--accent-soft);
+}
+
+.note-row-title {
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.note-row-snippet {
+  font-size: 12.5px;
+  color: var(--text-2);
+}
+
+.note-row-time {
+  font-size: 11.5px;
+  color: var(--text-3);
+}
+
+.note-editor {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.note-editor-bar {
+  display: flex;
+  align-items: center;
+  flex: none;
+  gap: 12px;
+  height: 50px;
+  padding: 0 12px 0 22px;
+  border-bottom: 1px solid var(--border);
+}
+
+.note-back {
+  display: none;
+}
+
+.note-meta {
+  flex: 1;
+  min-width: 0;
+  font-size: 12.5px;
+  color: var(--text-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.note-title-input {
+  flex: none;
+  padding: 20px 22px 6px;
+  background: transparent;
+  border: 0;
+  outline: none;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--text);
+}
+
+.note-title-input::placeholder,
+.note-body-input::placeholder {
+  color: var(--text-3);
+}
+
+.note-body-input {
+  flex: 1;
+  min-height: 0;
+  padding: 8px 22px 22px;
+  background: transparent;
+  border: 0;
+  outline: none;
+  resize: none;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.notes-editor-panel > .empty {
+  margin: auto;
+}
+
+@media (max-width: 900px) {
+  .notes-layout {
+    grid-template-columns: minmax(0, 1fr);
+    height: calc(100dvh - var(--topbar-h) - 170px);
+  }
+
+  .notes-layout:not(.has-selection) .notes-editor-panel {
+    display: none;
+  }
+
+  .notes-layout.has-selection .notes-list-panel {
+    display: none;
+  }
+
+  .note-back {
+    display: inline-flex;
+  }
+
+  .note-meta {
+    display: none;
+  }
+
+  .note-editor-bar {
+    justify-content: space-between;
+    padding-left: 16px;
+  }
+}
+
+/* ───────── Bookmarks ───────── */
+.bookmark-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 14px;
+}
+
+.bookmark-error {
+  grid-column: 1 / -1;
+}
+
+.bookmark-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 12px;
+}
+
+.bookmark {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-right: 8px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--dur);
+}
+
+.bookmark:hover,
+.bookmark:focus-within {
+  border-color: var(--accent-line);
+}
+
+.bookmark-link {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 13px 8px 13px 14px;
+  border-radius: var(--radius-lg);
+}
+
+.bookmark-tile {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.bookmark-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.bookmark-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.bookmark-host {
+  font-size: 12.5px;
+  color: var(--text-2);
+}
+
+.bookmark-open {
+  flex: none;
+  color: var(--text-3);
+  transition: color var(--dur);
+}
+
+.bookmark:hover .bookmark-open {
+  color: var(--accent);
+}
+
+@media (max-width: 720px) {
+  .bookmark-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ───────── Settings ───────── */
+.settings-card {
+  padding: 0;
+}
+
+.settings-head {
+  padding: 18px 22px 0;
+}
+
+.settings-desc {
+  margin-top: 2px;
+  font-size: 12.5px;
+  color: var(--text-2);
+}
+
+.settings-body {
+  padding: 6px 22px;
+}
+
+.settings-body > * {
+  padding: 16px 0;
+}
+
+.settings-body > * + * {
+  border-top: 1px solid var(--border);
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.settings-row-label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.settings-row-desc {
+  margin-top: 2px;
+  font-size: 12.5px;
+  color: var(--text-2);
+}
+
+.settings-row-control {
+  flex: none;
+}
+
+.settings-input {
+  width: 240px;
+}
+
+.accent-picker {
+  display: flex;
+  gap: 12px;
+}
+
+.accent-swatch {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--swatch);
+  color: var(--on-accent);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.accent-swatch:hover {
+  transform: scale(1.1);
+}
+
+.accent-swatch.is-active {
+  box-shadow: 0 0 0 2px var(--card), 0 0 0 4px var(--swatch);
+}
+
+.data-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+.data-summary > div {
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.data-summary dt {
+  font-size: 12.5px;
+  color: var(--text-2);
+}
+
+.data-summary dd {
+  margin: 2px 0 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+@media (max-width: 720px) {
+  .settings-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .settings-input {
+    width: 100%;
+  }
+
+  .settings-row-control {
+    width: 100%;
+  }
+}
